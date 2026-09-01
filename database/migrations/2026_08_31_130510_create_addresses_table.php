@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("main_address");
             $table->string("second_address")->nullable(true);
-            $table->unsignedInteger("postal_code");
+            $table->string("post_code");
             $table->string("country");
             $table->string("autonomous_community");
             $table->string("city");
