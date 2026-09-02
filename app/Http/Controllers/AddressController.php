@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAddressRequest;
+use App\Http\Requests\UpdateAddressRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +26,10 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAddressRequest $request)
     {
-        //
+        $address = Address::create($request->validated());
+        return response()->json(["data" => $address], Response::HTTP_CREATED);
     }
 
     /**
@@ -40,9 +43,10 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAddressRequest $request, Address $address)
     {
-        //
+        $address->update($request->validated());
+        return response()->json(["data" => $address]);
     }
 
     /**
