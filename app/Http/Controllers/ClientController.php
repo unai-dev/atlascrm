@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +26,10 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreClientRequest $request)
     {
-        //
+        $client = Client::create($request->validated());
+        return response()->json(["data" => $client], Response::HTTP_CREATED);
     }
 
     /**
@@ -40,9 +43,10 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateClientRequest $request, Client $client)
     {
-        //
+        $client->update($request->validated());
+        return response()->json(["data" => $client]);
     }
 
     /**
