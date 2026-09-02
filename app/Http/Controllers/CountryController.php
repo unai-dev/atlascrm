@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $perPage = $request->query("per_page", 5);
+        $page = $request->query("page", 0);
+        $offset = $page * $perPage;
+
+        $countries = Country::skip($offset)->take($perPage)->get();
+        return response()->json(["data" => $countries]);
     }
 
     /**
@@ -21,30 +28,33 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
-        //
+        $country = Country::create($request->validated());
+        return response()->json(["data" => $country], Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Country $country)
     {
-        //
+        return response()->json(["data" => $country]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCountryRequest $request, string $id)
+    public function update(UpdateCountryRequest $request, Country $country)
     {
-        //
+        $country->update($request->validated());
+        return response()->json(["data" => $country]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
