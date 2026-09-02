@@ -16,11 +16,16 @@ class Address extends Model
         'post_code',
         'country',
         'autonomous_community',
-        'city'
+        'city_id'
     ];
 
     public function clients()
     {
         return $this->hasMany(Client::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }
