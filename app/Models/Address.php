@@ -14,7 +14,7 @@ class Address extends Model
         'main_address',
         'second_address',
         'post_code',
-        'country',
+        'country_id',
         'autonomous_community',
         'city_id'
     ];
@@ -22,6 +22,11 @@ class Address extends Model
     public function clients()
     {
         return $this->hasMany(Client::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 
     public function city()

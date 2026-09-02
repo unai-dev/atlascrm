@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,11 +21,11 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         $citiesIDs = City::pluck("id")->toArray();
-
+        $countriesIDs = Country::pluck("id")->toArray();
         return [
             "main_address" => $this->faker->address(),
             "post_code" => $this->faker->postcode(),
-            "country" => $this->faker->country(),
+            "country_id" => $this->faker->randomElement($countriesIDs),
             "autonomous_community" => $this->faker->text(),
             "city_id" => $this->faker->randomElement($citiesIDs)
         ];
