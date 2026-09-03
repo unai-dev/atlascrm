@@ -20,7 +20,7 @@ class CountryController extends Controller
         $offset = $page * $perPage;
 
         $countries = Country::skip($offset)->take($perPage)->get();
-        return response()->json(["data" => $countries]);
+        return $this->successResponse($countries);
     }
 
     /**
@@ -29,7 +29,7 @@ class CountryController extends Controller
     public function store(StoreCountryRequest $request)
     {
         $country = Country::create($request->validated());
-        return response()->json(["data" => $country], Response::HTTP_CREATED);
+        return $this->successResponse($country, Response::HTTP_CREATED);
     }
 
     /**
@@ -37,7 +37,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        return response()->json(["data" => $country]);
+        return $this->successResponse($country);
     }
 
     /**
@@ -46,7 +46,7 @@ class CountryController extends Controller
     public function update(UpdateCountryRequest $request, Country $country)
     {
         $country->update($request->validated());
-        return response()->json(["data" => $country]);
+        return $this->successResponse($country);
     }
 
     /**
@@ -55,6 +55,6 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         $country->delete();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
 }

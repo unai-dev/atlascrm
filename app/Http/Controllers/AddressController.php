@@ -20,7 +20,7 @@ class AddressController extends Controller
         $offset = $page * $perPage;
 
         $addresses = Address::skip($offset)->take($perPage)->get();
-        return response()->json(["data" => $addresses]);
+        return $this->successResponse($addresses);
     }
 
     /**
@@ -29,7 +29,7 @@ class AddressController extends Controller
     public function store(StoreAddressRequest $request)
     {
         $address = Address::create($request->validated());
-        return response()->json(["data" => $address], Response::HTTP_CREATED);
+        return $this->successResponse($address, Response::HTTP_CREATED);
     }
 
     /**
@@ -37,7 +37,7 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        return response()->json(["data" => $address]);
+        return $this->successResponse($address);
     }
 
     /**
@@ -46,7 +46,7 @@ class AddressController extends Controller
     public function update(UpdateAddressRequest $request, Address $address)
     {
         $address->update($request->validated());
-        return response()->json(["data" => $address]);
+        return $this->successResponse($address);
     }
 
     /**
@@ -55,6 +55,6 @@ class AddressController extends Controller
     public function destroy(Address $address)
     {
         $address->delete();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
 }

@@ -7,7 +7,6 @@ use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -21,7 +20,7 @@ class AuthController extends Controller
             "password" => bcrypt($validated["password"])
         ]);
 
-        return response()->json(["data" => $user], Response::HTTP_CREATED);
+        return $this->successResponse($user, Response::HTTP_CREATED);
     }
 
     public function login(LoginUserRequest $request)
@@ -30,12 +29,12 @@ class AuthController extends Controller
 
         try {
             if (!$token = auth()->attempt($validated)) {
-                return response()->json(["error" => "Invalid Credentials"], Response::HTTP_UNAUTHORIZED);
+                return $this->failedResponse("Invalid Credentials", Response::HTTP_FORBIDDEN);
             }
 
             return $this->respondWithToken($token);
         } catch (JWTException $ex) {
-            return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->jwtFailedResponse($ex);
         }
     }
 
@@ -44,7 +43,7 @@ class AuthController extends Controller
         try {
             return response()->json(["data" => auth()->user()]);
         } catch (JWTException $ex) {
-            return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->jwtFailedResponse($ex);
         }
     }
 
@@ -54,7 +53,7 @@ class AuthController extends Controller
             auth()->invalidate(auth()->getToken());
             return response()->json([], Response::HTTP_NO_CONTENT);
         } catch (JWTException $ex) {
-            return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->jwtFailedResponse($ex);
         }
     }
 
@@ -66,7 +65,7 @@ class AuthController extends Controller
             auth()->invalidate($oldToken);
             return $this->respondWithToken($newToken);
         } catch (JWTException $ex) {
-            return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->jwtFailedResponse($ex);
         }
     }
 

@@ -20,7 +20,7 @@ class CityController extends Controller
         $offset = $page * $perPage;
 
         $cities = City::skip($offset)->take($perPage)->get();
-        return response()->json(["data" => $cities]);
+        return $this->successResponse($cities);
     }
 
     /**
@@ -29,7 +29,7 @@ class CityController extends Controller
     public function store(StoreCityRequest $request)
     {
         $city = City::create($request->validated());
-        return response()->json(["data" => $city], Response::HTTP_CREATED);
+        return $this->successResponse($city, Response::HTTP_CREATED);
     }
 
     /**
@@ -37,7 +37,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        return response()->json(["data" => $city]);
+        return $this->successResponse($city);
     }
 
     /**
@@ -46,7 +46,7 @@ class CityController extends Controller
     public function update(UpdateCityRequest $request, City $city)
     {
         $city->update($request->validated());
-        return response()->json(["data" => $city]);
+        return $this->successResponse($city);
     }
 
     /**
@@ -55,6 +55,6 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->delete();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
 }
