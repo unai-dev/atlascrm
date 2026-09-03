@@ -29,11 +29,20 @@ class AuthController extends Controller
         $validated = $request->validated();
 
         try {
-            if (!$token = JWTAuth::attempt($validated)) {
+            if (!$token = auth()->attempt($validated)) {
                 return response()->json(["error" => "Invalid Credentials"], Response::HTTP_UNAUTHORIZED);
             }
 
             return $this->respondWithToken($token);
+        } catch (JWTException $ex) {
+            return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function who()
+    {
+        try {
+            return response()->json(["data" => auth()->user()]);
         } catch (JWTException $ex) {
             return response()->json(["error" => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

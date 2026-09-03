@@ -15,11 +15,13 @@ Route::get("/", fn() => response()->json(["message" => "¡AtlasCRM is running!"]
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 Route::post("/register", [AuthController::class, "register"]);
-Route::post("/login", [AuthController::class, "login"])->name("login");
+Route::post("/login", [AuthController::class, "login"]);
 
 Route::middleware("jwt.auth")->group(function () {
     Route::apiResource("/clients", ClientController::class);
     Route::apiResource("/addresses", AddressController::class);
     Route::apiResource("/cities", CityController::class);
     Route::apiResource("/countries", CountryController::class);
+
+    Route::get("/who", [AuthController::class, "who"]);
 });
