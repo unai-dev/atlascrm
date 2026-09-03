@@ -24,4 +24,6 @@ Route::middleware("jwt.auth")->group(function () {
     Route::apiResource("/countries", CountryController::class);
 
     Route::get("/who", [AuthController::class, "who"]);
+    Route::post("/logout", [AuthController::class, "logout"]);
+    Route::post("/refresh", [AuthController::class, "refresh"]);
 });
