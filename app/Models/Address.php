@@ -18,11 +18,6 @@ class Address extends Model
         'city_id'
     ];
 
-    public function clients()
-    {
-        return $this->hasMany(Client::class);
-    }
-
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -31,5 +26,15 @@ class Address extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    public function enterprises()
+    {
+        return $this->hasMany(Enterprise::class);
     }
 }
