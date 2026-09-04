@@ -27,7 +27,6 @@ class UpdateAddressRequest extends GeneralFormRequest
             "second_address" => "string|max:255",
             "post_code" => "string|max:55",
             "country" => "string|max:255",
-            "autonomous_community" => "string|max:255",
             "city" => "string|max:255"
         ];
     }

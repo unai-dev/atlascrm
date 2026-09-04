@@ -15,7 +15,6 @@ class Address extends Model
         'second_address',
         'post_code',
         'country_id',
-        'autonomous_community',
         'city_id'
     ];
 

@@ -27,7 +27,6 @@ class StoreAddressRequest extends GeneralFormRequest
             "second_address" => "string|max:255",
             "post_code" => "required|string|max:55",
             "country" => "required|string|max:255",
-            "autonomous_community" => "required|string|max:255",
             "city" => "required|string|max:255"
         ];
     }
