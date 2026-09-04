@@ -26,7 +26,6 @@ class AddressFactory extends Factory
             "main_address" => $this->faker->address(),
             "post_code" => $this->faker->postcode(),
             "country_id" => $this->faker->randomElement($countriesIDs),
-            "autonomous_community" => $this->faker->text(),
             "city_id" => $this->faker->randomElement($citiesIDs)
         ];
     }
