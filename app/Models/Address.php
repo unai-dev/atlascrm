@@ -18,6 +18,11 @@ class Address extends Model
         'city_id'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               BELONGS TO RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -28,6 +33,11 @@ class Address extends Model
         return $this->belongsTo(City::class);
     }
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function clients()
     {
         return $this->hasMany(Client::class);

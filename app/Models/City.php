@@ -12,6 +12,11 @@ class City extends Model
 
     protected $fillable = ["name"];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function addresses()
     {
         return $this->hasMany(Address::class);

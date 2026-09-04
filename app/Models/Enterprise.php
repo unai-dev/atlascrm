@@ -18,11 +18,21 @@ class Enterprise extends Model
         'address_id'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               BELONGS TO RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function address()
     {
         return $this->belongsTo(Address::class);
     }
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function clients()
     {
         return $this->hasMany(Client::class);

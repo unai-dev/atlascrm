@@ -20,6 +20,11 @@ class Client extends Model
         'enterprise_id'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               BELONGS TO RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function address()
     {
         return $this->belongsTo(Address::class);

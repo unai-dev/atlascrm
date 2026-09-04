@@ -14,6 +14,11 @@ class Country extends Model
         'name'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function addresses()
     {
         return $this->hasMany(Address::class);
