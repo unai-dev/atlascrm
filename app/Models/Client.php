@@ -16,11 +16,17 @@ class Client extends Model
         'age',
         'phone',
         'email',
-        'address_Id',
+        'address_id',
+        'enterprise_id'
     ];
 
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function enterprise()
+    {
+        return $this->belongsTo(Enterprise::class);
     }
 }
