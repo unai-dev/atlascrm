@@ -16,6 +16,11 @@ class ClientNote extends Model
         'category_id'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               BELONGS TO RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function client()
     {
         return $this->belongsTo(Client::class);
