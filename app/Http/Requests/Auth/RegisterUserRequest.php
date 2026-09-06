@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
+use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class RegisterUserRequest extends GeneralFormRequest

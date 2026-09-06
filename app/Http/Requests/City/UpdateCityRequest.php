@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\City;
 
+use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
 
-class LoginUserRequest extends GeneralFormRequest
+class UpdateCityRequest extends GeneralFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +24,7 @@ class LoginUserRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            "email" => "required|string|email",
-            "password" => "required|string|min:6"
+            "name" => "required|string|max:255|unique:cities"
         ];
     }
 }

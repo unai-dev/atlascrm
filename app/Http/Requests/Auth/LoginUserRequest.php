@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
+use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCountryRequest extends GeneralFormRequest
+class LoginUserRequest extends GeneralFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class StoreCountryRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|string|max:255|unique:countries"
+            "email" => "required|string|email",
+            "password" => "required|string|min:6"
         ];
     }
 }

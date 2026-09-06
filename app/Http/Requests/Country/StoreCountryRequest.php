@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Country;
 
+use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateClientRequest extends GeneralFormRequest
+class StoreCountryRequest extends GeneralFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +24,7 @@ class UpdateClientRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            'first_name' => "string|max:55",
-            'last_name' => "string|max:55",
-            'age' => "numeric",
-            'phone' => "string|max:55",
-            'email' => "string|email|unique:clients",
-            'address_Id' => "numeric|exists:addresses,id"
+            "name" => "required|string|max:255|unique:countries"
         ];
     }
 }

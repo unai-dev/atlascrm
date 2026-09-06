@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Address;
 
+use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCityRequest extends GeneralFormRequest
+class UpdateAddressRequest extends GeneralFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +24,11 @@ class StoreCityRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|string|max:255|unique:cities"
+            "main_address" => "string|max:255",
+            "second_address" => "string|max:255",
+            "post_code" => "string|max:55",
+            "country" => "string|max:255",
+            "city" => "string|max:255"
         ];
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEnterpriseRequest;
-use App\Http\Requests\UpdateEnterpriseRequest;
+use App\Http\Requests\Enterprise\StoreEnterpriseRequest;
+use App\Http\Requests\Enterprise\UpdateEnterpriseRequest;
 use App\Models\Enterprise;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
