@@ -10,6 +10,8 @@ class Address extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = "addresses";
+
     protected $fillable = [
         'main_address',
         'second_address',

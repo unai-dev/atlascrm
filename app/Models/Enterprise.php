@@ -10,6 +10,8 @@ class Enterprise extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = "enterprises";
+
     protected $fillable = [
         'name',
         'observations',
