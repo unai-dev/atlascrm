@@ -14,6 +14,11 @@ class Category extends Model
         'name'
     ];
 
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     public function clientsNotes()
     {
         return $this->hasMany(ClientNote::class);

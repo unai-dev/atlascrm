@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Requests\Category;
+
+use App\Http\Requests\Common\GeneralFormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Validation\Rule;
+
+class UpdateCategoryRequest extends GeneralFormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => [
+                'string',
+                'max:55',
+                Rule::unique('categories', 'name')->ignore($this->route('category'))
+            ],
+        ];
+    }
+}
