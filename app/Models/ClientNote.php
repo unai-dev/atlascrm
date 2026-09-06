@@ -10,6 +10,7 @@ class ClientNote extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = "clients_notes";
     protected $fillable = [
         'note',
         'client_id',
