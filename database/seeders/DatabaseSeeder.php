@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Client;
+use App\Models\ClientNote;
 use App\Models\Country;
 use App\Models\Enterprise;
 use App\Models\User;
@@ -26,5 +28,7 @@ class DatabaseSeeder extends Seeder
         Address::factory(10)->create();
         Client::factory(10)->create();
         Enterprise::factory(10)->create();
+        Category::factory(10)->create();
+        ClientNote::factory(10)->create();
     }
 }
