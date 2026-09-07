@@ -4,7 +4,6 @@ namespace App\Http\Requests\Client;
 
 use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
 class StoreClientRequest extends GeneralFormRequest
 {

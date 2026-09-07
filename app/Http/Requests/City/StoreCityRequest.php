@@ -4,7 +4,6 @@ namespace App\Http\Requests\City;
 
 use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCityRequest extends GeneralFormRequest
 {

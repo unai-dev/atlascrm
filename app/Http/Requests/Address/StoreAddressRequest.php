@@ -4,7 +4,6 @@ namespace App\Http\Requests\Address;
 
 use App\Http\Requests\Common\GeneralFormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAddressRequest extends GeneralFormRequest
 {
