@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\City;
+use App\Models\Country;
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,10 @@ class CityFactory extends Factory
      */
     public function definition(): array
     {
+        $countriesIDs = Country::pluck("id")->toArray();
         return [
-            "name" => $this->faker->city()
+            "name" => $this->faker->city(),
+            "country_id" => $this->faker->randomElement($countriesIDs)
         ];
     }
 }

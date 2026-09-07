@@ -16,7 +16,6 @@ class Address extends Model
         'main_address',
         'second_address',
         'post_code',
-        'country_id',
         'city_id'
     ];
 
