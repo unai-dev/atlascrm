@@ -25,6 +25,7 @@ class UpdateCategoryRequest extends GeneralFormRequest
     {
         return [
             'name' => [
+                'required',
                 'string',
                 'max:55',
                 Rule::unique('categories', 'name')->ignore($this->route('category'))

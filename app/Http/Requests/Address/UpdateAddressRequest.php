@@ -27,8 +27,7 @@ class UpdateAddressRequest extends GeneralFormRequest
             "main_address" => "string|max:255",
             "second_address" => "string|max:255",
             "post_code" => "string|max:55",
-            "country" => "string|max:255",
-            "city" => "string|max:255"
+            "city" => "numeric|exists:cities,id"
         ];
     }
 }

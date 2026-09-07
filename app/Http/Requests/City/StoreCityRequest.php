@@ -24,7 +24,8 @@ class StoreCityRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|string|max:255|unique:cities"
+            "name" => "required|string|max:255|unique:cities",
+            "country_id" => "required|numeric|exists:countries,id"
         ];
     }
 }

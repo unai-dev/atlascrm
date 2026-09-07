@@ -29,7 +29,7 @@ class StoreClientRequest extends GeneralFormRequest
             'age' => "required|numeric",
             'phone' => "string|max:55",
             'email' => "required|string|email|unique:clients",
-            'address_Id' => "required|numeric|exists:addresses,id"
+            'address_id' => "required|numeric|exists:addresses,id"
         ];
     }
 }

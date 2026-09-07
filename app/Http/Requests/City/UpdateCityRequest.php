@@ -24,7 +24,8 @@ class UpdateCityRequest extends GeneralFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|string|max:255|unique:cities"
+            "name" => "string|max:255|unique:cities",
+            "country_id" => "numeric|exists:countries,id"
         ];
     }
 }
