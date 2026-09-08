@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use App\Models\Address;
 use App\Models\Category;
 use App\Models\City;
@@ -30,5 +31,6 @@ class DatabaseSeeder extends Seeder
         Enterprise::factory(10)->create();
         Category::factory(10)->create();
         ClientNote::factory(10)->create();
+        Activity::factory(50)->create();
     }
 }
