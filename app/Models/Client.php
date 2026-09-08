@@ -36,4 +36,14 @@ class Client extends Model
     {
         return $this->belongsTo(Enterprise::class);
     }
+
+    /**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                               HAS MANY RELATIONS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
